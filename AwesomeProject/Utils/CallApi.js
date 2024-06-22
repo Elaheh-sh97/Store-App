@@ -1,5 +1,5 @@
 
-export const getProductsApi = ({num}) => {
+export const getProductsApi = (num) => {
   return new Promise((resolve, reject) => {
     fetchApi(`https://fakestoreapi.com/products?limit=${num}`, 'GET')
       .then(res => resolve(res))
@@ -7,7 +7,7 @@ export const getProductsApi = ({num}) => {
   });
 };
 
-const fetchApi = (url,{method}) => {
+const fetchApi = (url,method) => {
   return new Promise((resolve, reject) => {
     fetch(url)
     .then(res=>res.json())

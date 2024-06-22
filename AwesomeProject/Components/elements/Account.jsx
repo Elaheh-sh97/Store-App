@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { IconButton,Text } from "react-native-paper";
 
-export default Account=()=>{
+const Account=()=>{
     return(
         <View style={styles.container}>
             <View>
@@ -12,7 +12,7 @@ export default Account=()=>{
         <IconButton
         style={{margin:0}}
         icon="account-circle"
-        iconColor="#04c2c2"
+        iconColor="#0FD7DF"
         size={50}
         onPress={() => console.log('Pressed')}
       /></View>
@@ -30,3 +30,5 @@ const styles=StyleSheet.create({
  alignItems:'center'
     }
 })
+
+export default Account

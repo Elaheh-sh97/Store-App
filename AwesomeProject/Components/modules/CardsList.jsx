@@ -3,8 +3,9 @@ import {StyleSheet, View, FlatList} from 'react-native';
 import {Text, Searchbar} from 'react-native-paper';
 import Cards from '../elements/Cards';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Navigation from '../../Infrastructure/Navigation';
 
-export default CardsList = ({list,handleLoadMore}) => {
+const CardsList = ({list,handleLoadMore,navigation}) => {
   const [refresh, setRefresh] = useState(false);
 
 
@@ -20,9 +21,11 @@ export default CardsList = ({list,handleLoadMore}) => {
         data={list}
         numColumns={2}
         renderItem={item => {
-          console.log('*****************', item.item.image);
+          // console.log('*****************', item.item.image);
           return (
             <Cards
+            // onPress={showDetails(item.item)}
+            onPress={()=>navigation.navigate('Details',item.item)}
               title={item.item.title}
               cover={item.item.image}
               price={item.item.price}
@@ -47,3 +50,4 @@ export default CardsList = ({list,handleLoadMore}) => {
 //     // backgroundColor:'purple'
 //   },
 // });
+export default CardsList

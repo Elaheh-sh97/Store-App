@@ -6,25 +6,38 @@ import Account from '../Components/elements/Account';
 import CardsList from '../Components/modules/CardsList';
 
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [productList, setProductList] = useState([]);
-  const[page,setPage]=useState(0)
+  const[filteredList,setFilteredList]=useState([])
+let filter=false
+const fetchProduct=()=>{
+  getProductsApi()
+          .then(res => { setProductList(res)})
+          .catch(err=>console.error(err))
+}
+
+
+
   useEffect(() => {
-    getProductsApi(page)
-      .then(res => {
-        if (page == 0)
-        setProductList(res)
-      else{      
-        setProductList([...productList, ...res]);}
-        })
-      .catch(err => console.log(err));
-  }, [page]);
+    fetchProduct()
+        // if (page == 0){
+        
+        // }
+      // else{   
+      //   getProductsApi(page)  
+      //   .then(res => { setProductList([...productList, ...res])}) 
+        
+      //   }
+      // .catch(err => console.log(err));
+  }, []);
 
-  const handleLoadMore=()=>{
-    setPage(page+1)
+const onChangeText=(text)=>{
+  if(text != undefined && text.length){
+    filter=true
+    setFilteredList(productList.filter(item=>item.title.includes(text)))
+
   }
-  
-
+}
 
   return (
     <SafeAreaView style={styles.container}>
@@ -36,9 +49,9 @@ const Home = () => {
         hidden={false}
       />
       <Account />
-      <SearchBox />
+      <SearchBox productList={productList} setProductList={setProductList} onChangeText={onChangeText}/>
 
-      <CardsList handleLoadMore={handleLoadMore} list={productList} />
+      <CardsList  fetchProduct={fetchProduct} navigation={navigation}  list={filteredList} />
     </SafeAreaView>
   );
 };
@@ -46,9 +59,10 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#defcff',
+    // backgroundColor: '#E3FFFF',
+    backgroundColor:'#daf7f8',
     flexDirection: 'column',
-    padding: '5%',
+    paddingHorizontal: '5%',
   },
 });
 

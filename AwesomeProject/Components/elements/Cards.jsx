@@ -3,26 +3,30 @@ import {StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {Card} from 'react-native-paper';
 
-const Cards = ({title, content, cover, price}) => {
-  // console.log(")))))))))))))))))))))))))",title)
+const Cards = ({title, cover, price, onPress}) => {
   return (
-    <Card style={styles.cardContainer}>
-      {/* <Card.Content>{content}</Card.Content>  */}
+    <Card style={styles.cardContainer} onPress={onPress}>
       <Card.Cover
         resizeMode="contain"
         style={styles.cover}
         source={{uri: `${cover}`}}
       />
-      <Card.Title
-        titleNumberOfLines={2}
-        titleStyle={{overflow: 'visible', fontSize: 12, marginVertical: '5%'}}
-        title={title}
-      />
+      <Card.Content>
         <Card.Title
-      
-        titleStyle={{overflow: 'visible', fontSize: 15, marginVertical: '5%'}}
-        title={`$`+` ${price}`}
-      />
+          titleNumberOfLines={3}
+          titleStyle={{overflow: 'visible', fontSize: 11}}
+          title={title}
+        />
+        <Card.Title
+          titleStyle={{overflow: 'visible', fontSize: 15}}
+          title={
+            <>
+              <Text style={{color: '#04c2c2', fontSize: 17}}>$</Text>
+              <Text>{price}</Text>
+            </>
+          }
+        />
+      </Card.Content>
     </Card>
   );
 };
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     // justifyContent:'center',
     alignSelf: 'center',
     width: '80%',
-backgroundColor:'white'
+    backgroundColor: 'white',
     // height:'40%'
   },
 });
