@@ -11,6 +11,7 @@ const SearchBox = ({onChangeText}) => {
    iconColor='#04c2c2'
       placeholderTextColor={'#bdbbbb'}
         placeholder="Search ..."
+        
  onChangeText={onChangeText}
         mode="bar"
         style={{width: '90%', backgroundColor: 'white',borderColor:'#04c2c2',borderWidth:0.5,}}
