@@ -4,17 +4,20 @@ import {Text, Searchbar} from 'react-native-paper';
 import {Button} from 'react-native-paper';
 
 const SearchBox = ({onChangeText}) => {
- 
   return (
     <View style={styles.container}>
       <Searchbar
-   iconColor='#04c2c2'
-      placeholderTextColor={'#bdbbbb'}
+        iconColor="#04c2c2"
+        placeholderTextColor={'#bdbbbb'}
         placeholder="Search ..."
-        
- onChangeText={onChangeText}
+        onChangeText={onChangeText}
         mode="bar"
-        style={{width: '90%', backgroundColor: 'white',borderColor:'#04c2c2',borderWidth:0.5,}}
+        style={{
+          width: '90%',
+          backgroundColor: 'white',
+          borderColor: '#04c2c2',
+          borderWidth: 0.5,
+        }}
       />
     </View>
   );
@@ -22,12 +25,9 @@ const SearchBox = ({onChangeText}) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex:1,
-    
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor:'red',
     marginVertical: '5%',
   },
 });
-export default SearchBox
+export default SearchBox;

@@ -1,36 +1,35 @@
-import React, {useState, useEffect,useRef} from 'react';
-import {View, StyleSheet, Image, PixelRatio,Dimensions,} from 'react-native';
-import {Button, IconButton, Text,useTheme} from 'react-native-paper';
+import React, {useState, useEffect} from 'react';
+import {View, StyleSheet, Image, Dimensions,} from 'react-native';
+import {Button, IconButton, Text, useTheme} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import * as Animatable from 'react-native-animatable'
+import * as Animatable from 'react-native-animatable';
 const Details = ({navigation, route}) => {
   const [details, setDetails] = useState();
-  const{colors}=useTheme()
+  const {colors} = useTheme();
+  const { width, height } = Dimensions.get('window');
+  const iconSize = width * 0.1; 
   useEffect(() => {
     if (route.params) {
       setDetails(route.params);
     }
   }, []);
-  const fontScale = PixelRatio.getFontScale();
-  const getFontSize = size => size / fontScale;
-  // const moveAnim=useRef(new Animated.Value(0)).current
-
 
   return (
-    <SafeAreaView style={[styles.container,{backgroundColor:colors.background}]}>
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: colors.background}]}>
       <View style={styles.topBar}>
         <IconButton
           style={{margin: 0}}
           icon="arrow-left-circle"
           iconColor={colors.primary}
-          size={40}
+          size={iconSize}
           onPress={() => navigation.goBack()}
         />
         <IconButton
           style={{margin: 0}}
           icon="account-circle"
           iconColor={colors.primary}
-          size={40}
+          size={iconSize}
           onPress={() => console.log('Pressed', typeof details.description)}
         />
       </View>
@@ -47,24 +46,37 @@ const Details = ({navigation, route}) => {
           source={
             details && details.image
               ? {uri: details.image}
-              : require('../assets/noImage.png')
+              : require('../../assets/noImage.png')
           }
         />
       </View>
       <Animatable.View
-   animation="fadeInUp"
-   duration={1500}
-      style={styles.bottomView}>
-        <View style={{flexDirection: 'column',}}>
-          <Text variant="titleLarge" style={[styles.title,{color:colors.onPrimary}]}>
+        animation="fadeInUp"
+        duration={1500}
+        style={styles.bottomView}>
+        <View style={{flexDirection: 'column'}}>
+          <Text
+            variant="titleLarge"
+            style={[styles.title, {color: colors.onPrimary}]}>
             {details ? details.title : ''}
           </Text>
-          <Text variant="titleMedium" style={{color:colors.onPrimary}}>Description</Text>
-          <Text variant="bodyMedium" numberOfLines={6} style={{color:colors.onPrimary}}>{details ? details.description : ''}</Text>
+          <Text variant="titleMedium" style={{color: colors.onPrimary}}>
+            Description
+          </Text>
+          <Text
+            variant="bodyMedium"
+            numberOfLines={6}
+            style={{color: colors.onPrimary}}>
+            {details ? details.description : ''}
+          </Text>
           <View style={styles.priceBox}>
-            <Text variant="titleMedium" style={{color:colors.onPrimary}}>Price : </Text>
+            <Text variant="titleMedium" style={{color: colors.onPrimary}}>
+              Price :{' '}
+            </Text>
             <View style={styles.priceTag}>
-              <Text variant="titleMedium" style={{color:colors.onPrimary}}>{details ? details.price : ''} </Text>
+              <Text variant="titleMedium" style={{color: colors.onPrimary}}>
+                {details ? details.price : ''}{' '}
+              </Text>
               <Text variant="labelLarge" style={{color: '#04c2c2'}}>
                 $
               </Text>
