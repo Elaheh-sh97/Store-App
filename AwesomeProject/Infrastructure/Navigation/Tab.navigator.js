@@ -4,24 +4,25 @@ import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import Basket from '../../Screens/basket';
 import {Icon} from 'react-native-paper';
 import MainPage from './Stack.navigator';
+import { useTheme } from 'react-native-paper';
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
+  const{colors}=useTheme()
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{flex: 1, backgroundColor: '#DAF0F8'}}>
+    // <SafeAreaProvider>
+    //   <SafeAreaView style={{flex: 1, backgroundColor: '#DAF0F8'}}>
         <Tab.Navigator
           screenOptions={{
             headerShown: false,
-            tabBarStyle: {borderRadius: 50, margin: '2%'},
           }}>
           <Tab.Screen
             options={{
               tabBarLabel: () => null,
               tabBarIcon: ({size, focused, color}) => {
                 return focused ? (
-                  <Icon size={size} source={'home'} color="#04c2c2" />
+                  <Icon size={size} source={'home'} color={colors.primary} />
                 ) : (
-                  <Icon size={size} source={'home-outline'} color="#04c2c2" />
+                  <Icon size={size} source={'home-outline'} color={colors.primary} />
                 );
               },
             }}
@@ -35,16 +36,16 @@ const TabNavigator = () => {
               tabBarLabel: () => null,
               tabBarIcon: ({size, focused, color}) => {
                 return focused ? (
-                  <Icon size={size} source={'basket'} color="#04c2c2" />
+                  <Icon size={size} source={'basket'} color={colors.primary} />
                 ) : (
-                  <Icon size={size} source={'basket-outline'} color="#04c2c2" />
+                  <Icon size={size} source={'basket-outline'} color={colors.primary} />
                 );
               },
             }}
           />
         </Tab.Navigator>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    //   </SafeAreaView>
+    // </SafeAreaProvider>
   );
 };
 

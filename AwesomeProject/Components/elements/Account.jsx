@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { IconButton,Text } from "react-native-paper";
+import { IconButton,Text,useTheme} from "react-native-paper";
 
 const Account=()=>{
+    const {colors}=useTheme()
     return(
         <View style={styles.container}>
             <View>
@@ -12,7 +13,7 @@ const Account=()=>{
         <IconButton
         style={{margin:0}}
         icon="account-circle"
-        iconColor="#0FD7DF"
+        iconColor={colors.primary}
         size={50}
         onPress={() => console.log('Pressed')}
       /></View>
@@ -26,7 +27,7 @@ const styles=StyleSheet.create({
  flexDirection:'row',
  justifyContent:'space-between',
 //  backgroundColor:'yellow',
-
+// "#0FD7DF"
  alignItems:'center'
     }
 })

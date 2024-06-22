@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../../Screens";
+import Home from "../../Screens/home";
 import Details from "../../Screens/productDetails";
 const MainPage=()=>{
     const Stack=createStackNavigator()

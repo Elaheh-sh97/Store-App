@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Text} from 'react-native-paper';
-import {Card} from 'react-native-paper';
+import {Text,Card,useTheme} from 'react-native-paper';
 
 const Cards = ({title, cover, price, onPress}) => {
+  const{colors}=useTheme()
   return (
     <Card style={styles.cardContainer} onPress={onPress}>
       <Card.Cover
@@ -14,15 +14,15 @@ const Cards = ({title, cover, price, onPress}) => {
       <Card.Content>
         <Card.Title
           titleNumberOfLines={3}
-          titleStyle={{overflow: 'visible', fontSize: 11}}
+          titleStyle={{overflow: 'visible', fontSize: 11, color: colors.onPrimary}}
           title={title}
         />
         <Card.Title
-          titleStyle={{overflow: 'visible', fontSize: 15}}
+          titleStyle={{overflow: 'visible', fontSize: 15,color: colors.onPrimary}}
           title={
             <>
               <Text style={{color: '#04c2c2', fontSize: 17}}>$</Text>
-              <Text>{price}</Text>
+              <Text style={{color:colors.onPrimary}}>{price}</Text>
             </>
           }
         />
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     width: '45%',
     backgroundColor: 'white',
     padding: '1%',
-    // height:250
   },
   cover: {
     // justifyContent:'center',

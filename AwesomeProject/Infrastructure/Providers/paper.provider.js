@@ -4,10 +4,12 @@ import { PaperProvider } from "react-native-paper";
 import { lightTheme } from "../Theme";
 import { darkTheme } from "../Theme";
 
-const provider=({children})=>{
+const PaperProviders=({children})=>{
     const currentTheme=useColorScheme()
+    
     const chosenTheme=currentTheme=='light'?lightTheme:darkTheme
-    return <PaperProvider theme={chosenTheme} />
+    // console.log("My",chosenTheme)
+    return <PaperProvider theme={chosenTheme}>{children}</PaperProvider>
 }
 
-export default provider
+export default PaperProviders

@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import {SafeAreaView, StyleSheet,} from 'react-native';
 import {getProductsApi} from '../Utils/CallApi';
 import SearchBox from '../Components/elements/SearchBox';
 import Account from '../Components/elements/Account';
 import CardsList from '../Components/modules/CardsList';
-
+import { useTheme } from 'react-native-paper';
 const Home = ({navigation}) => {
   const [productList, setProductList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [isFilter, setIsFilter] = useState(false);
   const[refresh,setRefresh]=useState(false)
+  const { colors } = useTheme();
+
   const fetchProduct = () => {
     setRefresh(true)
     getProductsApi()
@@ -21,8 +23,9 @@ const Home = ({navigation}) => {
       .catch(err => console.error(err));
   };
 
+
   useEffect(() => {
-    console.log("Here")
+    // console.log("Here--------")
     fetchProduct();
   }, []);
 
@@ -35,20 +38,12 @@ const Home = ({navigation}) => {
     }
   };
 
-// const pullToRefresh=()=>{
-//   setRefresh(true)
-//   fetchProduct()
-// }
+
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar
-        animated={true}
-        backgroundColor="#defcff"
-        barStyle={'dark-content'}
-        hidden={false}
-      />
+    <SafeAreaView style={[styles.container,{backgroundColor:colors.background}]}>
+
       <Account />
       <SearchBox
         productList={productList}
@@ -70,7 +65,7 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#daf7f8',
+    // backgroundColor: '#daf7f8',
     flexDirection: 'column',
     paddingHorizontal: '5%',
   },

@@ -1,13 +1,14 @@
-import { PaperProvider } from "react-native-paper";
+// import { PaperProvider } from "react-native-paper";
+import PaperProviders from "./paper.provider";
 import App from "../../App";
 
 
 
 const Provider=()=>{
     return(
-        <PaperProvider>
+        <PaperProviders>
             <App/>
-        </PaperProvider>
+        </PaperProviders>
     )
 }
 

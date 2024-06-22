@@ -1,10 +1,11 @@
 import React, {useState, useEffect,useRef} from 'react';
-import {View, StyleSheet, Image, PixelRatio,Dimensions,Animated} from 'react-native';
-import {Button, IconButton, Text} from 'react-native-paper';
+import {View, StyleSheet, Image, PixelRatio,Dimensions,} from 'react-native';
+import {Button, IconButton, Text,useTheme} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Animatable from 'react-native-animatable'
 const Details = ({navigation, route}) => {
   const [details, setDetails] = useState();
+  const{colors}=useTheme()
   useEffect(() => {
     if (route.params) {
       setDetails(route.params);
@@ -16,19 +17,19 @@ const Details = ({navigation, route}) => {
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container,{backgroundColor:colors.background}]}>
       <View style={styles.topBar}>
         <IconButton
           style={{margin: 0}}
           icon="arrow-left-circle"
-          iconColor="#0FD7DF"
+          iconColor={colors.primary}
           size={40}
           onPress={() => navigation.goBack()}
         />
         <IconButton
           style={{margin: 0}}
           icon="account-circle"
-          iconColor="#0FD7DF"
+          iconColor={colors.primary}
           size={40}
           onPress={() => console.log('Pressed', typeof details.description)}
         />
@@ -55,15 +56,15 @@ const Details = ({navigation, route}) => {
    duration={1500}
       style={styles.bottomView}>
         <View style={{flexDirection: 'column',}}>
-          <Text variant="titleLarge" style={styles.title}>
+          <Text variant="titleLarge" style={[styles.title,{color:colors.onPrimary}]}>
             {details ? details.title : ''}
           </Text>
-          <Text variant="titleMedium" >Description</Text>
-          <Text variant="bodyMedium" numberOfLines={6} >{details ? details.description : ''}</Text>
+          <Text variant="titleMedium" style={{color:colors.onPrimary}}>Description</Text>
+          <Text variant="bodyMedium" numberOfLines={6} style={{color:colors.onPrimary}}>{details ? details.description : ''}</Text>
           <View style={styles.priceBox}>
-            <Text variant="titleMedium">Price : </Text>
+            <Text variant="titleMedium" style={{color:colors.onPrimary}}>Price : </Text>
             <View style={styles.priceTag}>
-              <Text variant="titleMedium">{details ? details.price : ''} </Text>
+              <Text variant="titleMedium" style={{color:colors.onPrimary}}>{details ? details.price : ''} </Text>
               <Text variant="labelLarge" style={{color: '#04c2c2'}}>
                 $
               </Text>
@@ -73,7 +74,7 @@ const Details = ({navigation, route}) => {
         <Button
           labelStyle={{color: 'white'}}
           style={styles.button}
-          mode="elevated">
+          mode="contained">
           Add to cart
         </Button>
         <View></View>
@@ -85,7 +86,7 @@ const Details = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#daf7f8',
+    // backgroundColor: '#daf7f8',
     padding: '5%',
   },
   topBar: {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
   button: {
     width: '50%',
     alignSelf: 'center',
-    backgroundColor: '#0FD7DF',
+    // backgroundColor: '#0FD7DF',
     position: 'absolute',
     bottom: '5%',
   },
