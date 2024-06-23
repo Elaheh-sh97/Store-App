@@ -2,7 +2,8 @@
 # AwesomeProject
 # Elikala
 
-AwesomeProject, branded as Elikala, is a small app designed for convenient shopping. It fetches items from an API and provides a user-friendly interface for browsing and viewing item details
+AwesomeProject, branded as Elikala, is a small app designed for convenient shopping. It fetches items from an API and provides a user-friendly interface for browsing and viewing item details.
+
 
 ## Features
 
@@ -16,6 +17,11 @@ AwesomeProject, branded as Elikala, is a small app designed for convenient shopp
 ![Home Page](AwesomeProject/assets/screenshots/elikala-homePage.jpg)
 ### Detail Page
 ![Detail Page](AwesomeProject/assets/screenshots/elikala-detailPage.jpg)
+
+## Download AwesomeProject
+
+The latest version of AwesomeProject can be downloaded from the [Releases](https://github.com/Elaheh-sh97/Store-App/releases) section.
+
 
 ## Installation
 
