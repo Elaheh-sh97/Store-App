@@ -35,7 +35,7 @@ const Home = ({navigation}) => {
   useFocusEffect(
     useCallback(() => {
       const backAction = () => {
-        Alert.alert('Alert', 'Do you want to quite the app?', [
+        Alert.alert('Alert', 'Do you want to quit the app?', [
           {
             text: 'No',
             onPress: () => null,
